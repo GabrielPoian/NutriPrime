@@ -3,7 +3,8 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, ImageBackgr
 import Button from '../components/button';
 import Input from '../components/input';
 
-export default function Comanda(){
+
+export default function Comanda({navigation}){
   return(
     <View style={styles.container}>
       <View>
@@ -13,7 +14,7 @@ export default function Comanda(){
 
       <View>
         <Input />
-        <Button>Confirmar</Button>
+        <Button onPress={() => navigation.navigate("Produtos")}>confirmar</Button>
       </View>
 
       <Text>
