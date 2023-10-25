@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import Button from '../components/button';
 import Input from '../components/input';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Login({navigation}) {
+  const[email,setEmail] = useState('')
+  const[senha,setSenha] = useState('')
+  const [erro,setErro] = useState('')
+
+  const{login} = useContext(AuthContext)
+
+  async function handleLogin(){
+    if (await login({email,senha})){
+      navigation.navigate("Comanda")
+    }else{
+      setErro("usuario ou senha inválidos")
+
+    }
+  }
   return (
     <ImageBackground
       source={require('../assets/login.png')}
@@ -14,10 +29,16 @@ export default function Login({navigation}) {
       <Text style={styles.title}>NutriPrime</Text>
 
       <View >
-      <Input placeholder='e-mail' />
-      <Input placeholder='senha' secureTextEntry />
+      <Input placeholder='e-mail' value = {email} onChangeText={setEmail} />
+      <Input placeholder='senha' value = {senha} onChangeText={setSenha}secureTextEntry />
 
-      <Button  onPress={() => navigation.navigate('Comanda')}>Entrar</Button>
+      <Button  onPress ={handleLogin}>
+        Entrar
+      </Button>
+
+      <Text>{erro}</Text>
+
+
   </View>
 
   <TouchableOpacity>

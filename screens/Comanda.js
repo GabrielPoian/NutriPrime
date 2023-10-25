@@ -2,14 +2,17 @@ import { Text, StyleSheet, View, TextInput, TouchableOpacity, Image, ImageBackgr
 
 import Button from '../components/button';
 import Input from '../components/input';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 
 export default function Comanda({navigation}){
+  const {username} = useContext(AuthContext)
   return(
     <View style={styles.container}>
       <View>
         <Text>Olá,</Text>
-        <Text>Nome,</Text>
+        <Text>{username},</Text>
       </View>
 
       <View>

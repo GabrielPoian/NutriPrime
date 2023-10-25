@@ -20,5 +20,18 @@
             "id" : 3
         }
         
+    ],
+    "usuarios":[
+    {
+        "id":1,
+        "nome":"Gabriel Poian",
+        "email":"gabriel@fiap.com.br",
+        "senha":"1234"    
+    },{
+        "id":2,
+        "nome":"Joao Pedro",
+        "email":"joao@fiap.com.br",
+        "senha":"1234"    
+    }
     ]
 }
